@@ -1,0 +1,20 @@
+{
+  "name": "shohelrana/mvc-framework",
+  "description": "Php mvc framework",
+  "authors": [
+    {
+      "name": "Shohel Rana",
+      "email": "shohelrrrana@gmail.com"
+    }
+  ],
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "App\\": "app",
+      "Core\\": "core"
+    },
+    "files": [
+      "config.php"
+    ]
+  }
+}
