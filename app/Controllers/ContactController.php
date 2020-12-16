@@ -12,6 +12,6 @@ class ContactController extends Controller {
 		if ( $request->isPost() ) {
 			print_r( $request->body() );
 		}
-		$this->view( 'contact' );
+		return $this->view( 'contact' );
 	}
 }

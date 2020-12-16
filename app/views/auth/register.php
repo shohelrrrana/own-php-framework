@@ -5,6 +5,10 @@
 </header>
 <section>
     <div class="container">
+        <div class="d-flex justify-content-between my-3">
+            <h5>Please register bellow</h5>
+            <a class="btn btn-primary" href="/auth/login">Login</a>
+        </div>
         <form action="" method="post">
             <div class="form-group">
                 <label for="name">Name</label>

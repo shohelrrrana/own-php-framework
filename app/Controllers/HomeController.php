@@ -10,6 +10,6 @@ class HomeController extends Controller {
 
 	public function index () {
 		$params = [ 'name' => 'Shohel Rana' ];
-		$this->view( 'index', $params );
+		return $this->view( 'index', $params );
 	}
 }

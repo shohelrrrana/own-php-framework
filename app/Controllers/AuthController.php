@@ -4,6 +4,7 @@
 namespace App\Controllers;
 
 
+use App\Models\RegisterModel;
 use Core\Controller;
 use Core\Request;
 
@@ -11,18 +12,24 @@ class AuthController extends Controller {
 	public function login ( Request $request ) {
 		if ( $request->isPost() ) {
 			print_r( $request->body() );
-			echo 'Login';
+			return 'Login';
 		}
 
-		$this->view( 'auth/login' );
+		return $this->view( 'auth/login' );
 	}
 
 	public function register ( Request $request ) {
 		if ( $request->isPost() ) {
-			print_r( $request->body() );
-			echo 'Register';
+			$name            = $request->body( 'name' );
+			$email           = $request->body( 'email' );
+			$password        = $request->body( 'password' );
+			$confirmPassword = $request->body( 'confirmPassword' );
+			$register        = new RegisterModel();
+			$register->loadData( $request->body() );
+			var_dump( $register->validate() );
+			print_r( $register->errors );
 		}
 
-		$this->view( 'auth/register' );
+		return $this->view( 'auth/register' );
 	}
 }

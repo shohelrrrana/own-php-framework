@@ -8,8 +8,8 @@ class Router {
 	public Response   $response;
 
 	public function __construct () {
-		$this->request    = new Request();
-		$this->response   = new Response();
+		$this->request  = new Request();
+		$this->response = new Response();
 	}
 
 	public function get ( $path, $callback ) {
@@ -41,7 +41,7 @@ class Router {
 		}
 
 		if ( is_callable( $callback ) ) {
-			call_user_func( $callback, $this->request );
+			echo call_user_func( $callback, $this->request );
 		}
 	}
 }

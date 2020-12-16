@@ -4,7 +4,7 @@
 namespace Core;
 
 
-class Controller {
+abstract class Controller {
 	private string $layout = 'main';
 
 	protected function view ( string $viewFile, array $params = [] ) {
@@ -17,7 +17,7 @@ class Controller {
 			$content = $viewContent;
 		}
 
-		echo $content;
+		return $content;
 	}
 
 	private function viewContent ( string $file, array $params ) {
