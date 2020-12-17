@@ -5,15 +5,36 @@ namespace Core\Database;
 
 
 abstract class Model {
+	/**
+	 * Put all errors
+	 *
+	 * @var array $errors
+	 */
 	public array $errors = [];
+
+	/**
+	 * Define rule constants
+	 */
 	public const RULE_REQUIRED = 'required';
 	public const RULE_EMAIL    = 'email';
 	public const RULE_MIN      = 'min';
 	public const RULE_MAX      = 'max';
 	public const RULE_MATCH    = 'match';
 
+	/**
+	 * For register rules
+	 *
+	 * @return array
+	 */
 	abstract public function rules () : array;
 
+	/**
+	 * Load all params which get from request
+	 *
+	 * @param array $data
+	 *
+	 * @return void
+	 */
 	public function loadData ( array $data ) {
 		foreach ( $data as $key => $value ) {
 			if ( property_exists( $this, $key ) ) {
@@ -22,6 +43,11 @@ abstract class Model {
 		}
 	}
 
+	/**
+	 * Check validation and caught errors
+	 *
+	 * @return bool
+	 */
 	public function validate () {
 		foreach ( $this->rules() as $fieldName => $rules ) {
 			$value = $this->{$fieldName};
@@ -52,6 +78,15 @@ abstract class Model {
 		return empty( $this->errors );
 	}
 
+	/**
+	 * Add error message
+	 *
+	 * @param string $fieldName
+	 * @param string $rule
+	 * @param array $params
+	 *
+	 * @return  void
+	 */
 	private function addError ( string $fieldName, string $rule, $params = [] ) {
 		$message = $this->errorMessages()[ $rule ];
 		foreach ( $params as $key => $value ) {
@@ -60,6 +95,11 @@ abstract class Model {
 		$this->errors[ $fieldName ][] = $message;
 	}
 
+	/**
+	 * Error messages
+	 *
+	 * @return string[]
+	 */
 	private function errorMessages () {
 		return [
 			self::RULE_REQUIRED => 'The field is required.',
@@ -70,10 +110,24 @@ abstract class Model {
 		];
 	}
 
+	/**
+	 * Check if has error
+	 *
+	 * @param $fieldName
+	 *
+	 * @return bool
+	 */
 	public function hasError ( $fieldName ) {
 		return isset( $this->errors[ $fieldName ] );
 	}
 
+	/**
+	 * Get error by input attribute
+	 *
+	 * @param $fieldName
+	 *
+	 * @return mixed|string
+	 */
 	public function getError ( $fieldName ) {
 		return isset( $this->errors[ $fieldName ] ) ? $this->errors[ $fieldName ] : '';
 	}

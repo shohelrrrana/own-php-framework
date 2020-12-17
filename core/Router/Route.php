@@ -19,11 +19,15 @@ class Route {
 	private static array   $routes = [];
 
 	/**
+	 * Put instance of Request class
+	 *
 	 * @var Request
 	 */
 	public Request         $request;
 
 	/**
+	 * Put instance of Response class
+	 *
 	 * @var Response
 	 */
 	public Response        $response;

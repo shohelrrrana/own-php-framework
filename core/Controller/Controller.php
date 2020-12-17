@@ -3,10 +3,27 @@
 
 namespace Core\Controller;
 
-
+/**
+ * Class Controller
+ *
+ * @package Core\Controller
+ */
 abstract class Controller {
+	/**
+	 * Default view layout
+	 *
+	 * @var string $layout
+	 */
 	private string $layout = 'main';
 
+	/**
+	 * Get view content with layout
+	 *
+	 * @param string $viewFile
+	 * @param array $params
+	 *
+	 * @return bool|false|string|string[]
+	 */
 	protected function view ( string $viewFile, array $params = [] ) {
 		$layoutContent = $this->layoutContent();
 		$viewContent   = $this->viewContent( $viewFile, $params );
@@ -20,6 +37,14 @@ abstract class Controller {
 		return $content;
 	}
 
+	/**
+	 * Get only view content
+	 *
+	 * @param string $file
+	 * @param array $params
+	 *
+	 * @return false|string
+	 */
 	private function viewContent ( string $file, array $params ) {
 		$viewFile = VIEW_PATH . DS . $file . '.php';
 
@@ -39,6 +64,11 @@ abstract class Controller {
 
 	}
 
+	/**
+	 * Get layout content
+	 *
+	 * @return bool|false|string
+	 */
 	private function layoutContent () {
 		$layoutFile = VIEW_PATH . DS . 'layouts' . DS . $this->layout . '.php';
 
@@ -52,6 +82,11 @@ abstract class Controller {
 		return false;
 	}
 
+	/**
+	 * Set layout
+	 *
+	 * @param string $layout
+	 */
 	protected function setLayout ( string $layout ) {
 		$this->layout = $layout;
 	}

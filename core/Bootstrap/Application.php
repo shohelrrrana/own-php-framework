@@ -7,17 +7,28 @@ use Core\Router\Route;
 
 /**
  * Class Application
+ *
  * @package Core\Bootstrap
  */
 class Application {
+	/**
+	 * Put instance of Route class
+	 *
+	 * @var Route $route
+	 */
 	private Route $route;
 
+	/**
+	 * Application constructor.
+	 */
 	public function __construct () {
 		$this->route = new Route();
 	}
 
 	/**
 	 * Run the application
+	 *
+	 * @return void
 	 */
 	public function run () {
 		$this->checkDebugMode();
