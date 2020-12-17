@@ -4,8 +4,8 @@
 namespace App\Controllers;
 
 
-use Core\Controller;
-use Core\Request;
+use Core\Controller\Controller;
+use Core\Http\Request;
 
 class ContactController extends Controller {
 	public function index ( Request $request ) {

@@ -7,15 +7,18 @@
       "email": "shohelrrrana@gmail.com"
     }
   ],
-  "require": {},
+  "minimum-stability": "stable",
+  "require": {
+    "php": "7.4.3"
+  },
   "autoload": {
     "psr-4": {
-      "App\\": "app",
-      "Core\\": "core"
+      "App\\": "app/",
+      "Core\\": "core/"
     },
     "files": [
-      "config.php",
-      "core/helpers/functions.php"
+      "config/config.php",
+      "core/Helpers/functions.php"
     ]
   }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use Core\Model;
+use Core\Database\Model;
 
 /**
  * The RegisterModel class
  * */
-class RegisterModel extends Model {
+class User extends Model {
 	public string $name;
 	public string $email;
 	public string $password;

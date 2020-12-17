@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Core;
+namespace Core\Controller;
 
 
 abstract class Controller {
@@ -21,7 +21,7 @@ abstract class Controller {
 	}
 
 	private function viewContent ( string $file, array $params ) {
-		$viewFile = ROOT_PATH . "/app/views/{$file}.php";
+		$viewFile = VIEW_PATH . DS . $file . '.php';
 
 		if ( file_exists( $viewFile ) ) {
 			foreach ( $params as $key => $value ) {
@@ -40,7 +40,7 @@ abstract class Controller {
 	}
 
 	private function layoutContent () {
-		$layoutFile = ROOT_PATH . "/app/views/layouts/{$this->layout}.php";
+		$layoutFile = VIEW_PATH . DS . 'layouts' . DS . $this->layout . '.php';
 
 		if ( file_exists( $layoutFile ) ) {
 			ob_start();

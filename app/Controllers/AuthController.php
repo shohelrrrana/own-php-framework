@@ -4,9 +4,9 @@
 namespace App\Controllers;
 
 
-use App\Models\RegisterModel;
-use Core\Controller;
-use Core\Request;
+use App\Models\User;
+use Core\Controller\Controller;
+use Core\Http\Request;
 
 class AuthController extends Controller {
 	public function login ( Request $request ) {
@@ -24,10 +24,10 @@ class AuthController extends Controller {
 			$email           = $request->body( 'email' );
 			$password        = $request->body( 'password' );
 			$confirmPassword = $request->body( 'confirmPassword' );
-			$register        = new RegisterModel();
-			$register->loadData( $request->body() );
-			var_dump( $register->validate() );
-			print_r( $register->errors );
+			$user            = new User();
+			$user->loadData( $request->body() );
+			var_dump( $user->validate() );
+			print_r( $user->errors );
 		}
 
 		return $this->view( 'auth/register' );

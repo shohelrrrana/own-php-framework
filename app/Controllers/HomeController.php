@@ -4,7 +4,7 @@
 namespace App\Controllers;
 
 
-use Core\Controller;
+use Core\Controller\Controller;
 
 class HomeController extends Controller {
 
