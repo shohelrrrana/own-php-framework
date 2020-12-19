@@ -98,7 +98,12 @@ class Route {
 		}
 
 		if ( is_callable( $callback ) ) {
-			echo call_user_func( $callback, $this->request );
+			$data = call_user_func( $callback, $this->request );
+			if ( is_array( $data ) || is_object( $data ) ) {
+				echo Response::json( $data );
+			} else {
+				echo $data;
+			}
 		}
 	}
 }

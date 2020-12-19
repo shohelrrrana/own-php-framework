@@ -3,8 +3,6 @@
 
 namespace App\Controllers;
 
-
-use App\Models\User;
 use Core\Controller\Controller;
 use Core\Http\Request;
 
@@ -24,10 +22,6 @@ class AuthController extends Controller {
 			$email           = $request->body( 'email' );
 			$password        = $request->body( 'password' );
 			$confirmPassword = $request->body( 'confirmPassword' );
-			$user            = new User();
-			$user->loadData( $request->body() );
-			var_dump( $user->validate() );
-			print_r( $user->errors );
 		}
 
 		return $this->view( 'auth/register' );

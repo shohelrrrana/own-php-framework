@@ -15,7 +15,7 @@ class Response {
 	 *
 	 * @param int $code
 	 */
-	public function setStatusCode ( int $code ) {
+	public static function setStatusCode ( int $code ) {
 		http_response_code( $code );
 	}
 
@@ -26,7 +26,7 @@ class Response {
 	 *
 	 * @return false|string
 	 */
-	public function json ( $array ) {
+	public static function json ( $array ) {
 		return json_encode( $array );
 	}
 }

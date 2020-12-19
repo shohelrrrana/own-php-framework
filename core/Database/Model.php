@@ -1,10 +1,8 @@
 <?php
 
-
 namespace Core\Database;
 
-
-abstract class Model {
+abstract class Model extends DB {
 	/**
 	 * Put all errors
 	 *
@@ -130,5 +128,14 @@ abstract class Model {
 	 */
 	public function getError ( $fieldName ) {
 		return isset( $this->errors[ $fieldName ] ) ? $this->errors[ $fieldName ] : '';
+	}
+
+	/**
+	 * Get all errors
+	 *
+	 * @return array
+	 */
+	public function getErrors () {
+		return $this->errors;
 	}
 }

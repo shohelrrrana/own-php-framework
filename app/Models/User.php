@@ -8,6 +8,7 @@ use Core\Database\Model;
  * The RegisterModel class
  * */
 class User extends Model {
+	public string $table = 'users';
 	public string $name;
 	public string $email;
 	public string $password;
